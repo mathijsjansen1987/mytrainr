@@ -10,6 +10,8 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use App\User;
+use App\Video;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,3 +20,15 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+
+
+// API V1 //////////////////////////
+
+Route::get('/api/v1/users', ['middleware' => 'throttle:60,1', function (User $user) {
+    return $user::all();
+}]);
+
+Route::get('/api/v1/videos', ['middleware' => 'throttle:60,1', function (Video $video) {
+    return Video::all();
+}]);
