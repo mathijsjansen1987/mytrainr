@@ -28,4 +28,9 @@ class User extends Authenticatable
 	{
 		return $this->hasMany('App\Video', 'sporter_id', 'id');
 	}
+
+	public function groups()
+	{
+		return $this->hasMany('App\Group');
+	}
 }

@@ -9,4 +9,5 @@ class Group extends Model
 	protected $fillable = [
 		'sport_id','name','sporters'
 	];
+
 }
