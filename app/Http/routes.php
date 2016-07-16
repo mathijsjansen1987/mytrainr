@@ -29,6 +29,14 @@ Route::get('/api/v1/users', ['middleware' => 'throttle:60,1', function (User $us
     return $user::all();
 }]);
 
+// user video
+Route::get('api/v1/user/{id}/videos', ['middleware' => 'throttle:60,1', function ($id) {
+    return User::find($id)->videos;
+}]);
+
+
+
+
 Route::get('/api/v1/videos', ['middleware' => 'throttle:60,1', function (Video $video) {
     return Video::all();
 }]);

@@ -14,6 +14,7 @@ class CreateVideosTable extends Migration
 	{
 		Schema::create('videos', function (Blueprint $table) {
 			$table->increments('id');
+			$table->integer('sporter_id');
 			$table->integer('location_id');
 			$table->integer('sport_id');
 			$table->integer('record_device_id');

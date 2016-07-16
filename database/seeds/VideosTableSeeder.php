@@ -13,6 +13,7 @@ class VideosTableSeeder extends Seeder
 	{
 		DB::table('videos')->insert([
 			'location_id' => 1,
+			'sporter_id' => 1,
 			'sport_id' => 1,
 			'record_device_id' => 1,
 			'cover' => 'https://db2ih2bbf7xxb.cloudfront.net/d722dc71cdcee54f983451bc508c6754319bc6b2/images/video/105_177.png',
