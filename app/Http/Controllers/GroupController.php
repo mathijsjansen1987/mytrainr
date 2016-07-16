@@ -31,4 +31,11 @@ class GroupController extends Controller
 		$view->group = Group::find($id);
 		return $view;
 	}
+
+	public function get_add()
+	{
+		$view = view('groupadd');
+		$view->group = new Group;
+		return $view;
+	}
 }

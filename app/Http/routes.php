@@ -39,7 +39,9 @@ Route::group(['middleware' => 'role:sporter'], function () {
 // URLS ONLY FOR COACHES
 Route::group(['middleware' => 'role:coach'], function () {
 	Route::get('/groups', ['as' => 'groups', 'uses' => 'GroupController@index']);
-	Route::get('/groups/{id}', ['as' => 'groupdetail', 'uses' => 'GroupController@detail']);
+	Route::get('/group/add', ['as' => 'groupadd', 'uses' => 'GroupController@get_add']);
+	Route::get('/group/{id}', ['as' => 'groupdetail', 'uses' => 'GroupController@detail']);
+
 });
 
 // URLS ONLY FOR CLUBS

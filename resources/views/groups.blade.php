@@ -15,7 +15,9 @@
 						Ook kun je nieuwe sporters toevoegen aan de groepen.
 					</p>
 
-					<button type="button" class="btn btn-primary">Groep toevoegen</button><br>
+					{!! link_to_route('groupadd', 'Groep toevoegen',array(),array('class'=>'btn btn-primary')) !!}
+
+					<br><br>
 
 
 					<table class="table">
@@ -24,14 +26,16 @@
 						<tr>
 							<th>ID</th>
 							<th>Naam</th>
-							<th>beheren</th>
+							<th>Bewerken</th>
+							<th>Verwijderen</th>
 						</tr>
 
 
 						<tr>
 							<td>{{$group->id}}</td>
 							<td>{{$group->name}}</td>
-							<td>{!! link_to_route('groupdetail', 'Bewerken',array($group->id)) !!}</td>
+							<td width="120">{!! link_to_route('groupdetail', 'potlood',array($group->id)) !!}</td>
+							<td width="120">{!! link_to_route('groupdetail', 'verwijder',array($group->id)) !!}</td>
 						</tr>
 
 
