@@ -34,6 +34,6 @@ class User extends Authenticatable
 
 	public function groups()
 	{
-		return $this->hasMany('App\Group');
+		return $this->hasMany('App\Group','coach_id','id');
 	}
 }

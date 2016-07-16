@@ -29,7 +29,7 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 // URLS ONLY FOR SPORTERS
 Route::group(['middleware' => 'role:sporter'], function () {
@@ -38,7 +38,8 @@ Route::group(['middleware' => 'role:sporter'], function () {
 
 // URLS ONLY FOR COACHES
 Route::group(['middleware' => 'role:coach'], function () {
-	// Route::get('/videos', 'VideoController@index');
+	Route::get('/groups', ['as' => 'groups', 'uses' => 'GroupController@index']);
+	Route::get('/groups/{id}', ['as' => 'groupdetail', 'uses' => 'GroupController@detail']);
 });
 
 // URLS ONLY FOR CLUBS

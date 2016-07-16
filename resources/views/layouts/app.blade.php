@@ -48,6 +48,9 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
+                    @role('coach')
+                    	<li><a href="{{ url('/groups') }}">Groepen</a></li>
+                    @endrole
                     @role('sporter')
                     	<li><a href="{{ url('/videos') }}">Videos</a></li>
                     @endrole
@@ -62,7 +65,9 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} ({{Auth::user()->roles[0]->display_name}}) <span class="caret"></span>
+                                @if(isset(Auth::user()->roles[0]))
+                                	{{ Auth::user()->name }} ({{Auth::user()->roles[0]->display_name}}) <span class="caret"></span>
+                                @endif
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
