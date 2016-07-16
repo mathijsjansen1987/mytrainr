@@ -9,16 +9,35 @@
 
                 <div class="panel-body">
 
-                    <h1>Videos</h1>
+                  <h1>Videos</h1>
+					<p>
+						Hieronder staan je videos
+					</p>
 
-                    @foreach($videos as $video)
+					{!! link_to_route('groupadd', 'Video toevoegen',array(),array('class'=>'btn btn-primary')) !!}
 
-                    <img src="{{$video->cover}}" width="100%" height="auto"/>
+					<br><br>
 
-                    	Locatie: {{$video->location->name}} <br>
-                    	Sporter: {{$video->user->name}} <br>
-                    	Geupload: {{ $video->created_at->format('d-m-Y H:m:s') }}
-                    @endforeach
+					<table class="table">
+
+						<tr>
+							<th>ID</th>
+							<th>Datum</th>
+							<th>Locatie</th>
+							<th>Bewerken</th>
+							<th>Verwijderen</th>
+						</tr>
+
+						@foreach($videos as $video)
+							<tr>
+								<td>{{$video->id}}</td>
+								<td>{{ $video->created_at->format('d-m-Y H:m:s') }}</td>
+								<td>{{ $video->location->name }}</td>
+								<td width="120">{!! Html::decode(link_to_route('groupdetail', '<i class="fa fa-pencil fa-1x" aria-hidden="true"></i>',array($video->id))) !!}</td>
+								<td width="120">{!! Html::decode(link_to_route('groupdetail', '<i class="fa fa-trash fa-1x" aria-hidden="true"></i>',array($video->id))) !!}</td>
+							</tr>
+						@endforeach
+					</table>
 
                 </div>
             </div>

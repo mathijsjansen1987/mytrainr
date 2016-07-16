@@ -21,7 +21,6 @@
 
 
 					<table class="table">
-						@foreach($groups as $group)
 
 						<tr>
 							<th>ID</th>
@@ -30,15 +29,13 @@
 							<th>Verwijderen</th>
 						</tr>
 
-
-						<tr>
-							<td>{{$group->id}}</td>
-							<td>{{$group->name}}</td>
-							<td width="120">{!! Html::decode(link_to_route('groupdetail', '<i class="fa fa-pencil fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
-							<td width="120">{!! Html::decode(link_to_route('groupdetail', '<i class="fa fa-trash fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
-						</tr>
-
-
+						@foreach($groups as $group)
+							<tr>
+								<td>{{$group->id}}</td>
+								<td>{{$group->name}}</td>
+								<td width="120">{!! Html::decode(link_to_route('groupdetail', '<i class="fa fa-pencil fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
+								<td width="120">{!! Html::decode(link_to_route('groupdetail', '<i class="fa fa-trash fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
+							</tr>
 						@endforeach
 					</table>
 
