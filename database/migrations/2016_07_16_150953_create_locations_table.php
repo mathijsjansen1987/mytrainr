@@ -16,8 +16,8 @@ class CreateLocationsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->json('sports');
-            $table->float('lat');
-            $table->float('long');
+            $table->double('lat',8,6);
+            $table->double('long',8,6);
             $table->timestamps();
         });
     }
