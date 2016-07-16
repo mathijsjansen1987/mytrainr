@@ -18,4 +18,14 @@ class Video extends Model
 		return $this->hasMany('App\Analyse');
 	}
 
+	public function location()
+	{
+		return $this->belongsTo('App\Location');
+	}
+
+	public function user()
+	{
+		return $this->belongsTo('App\User', 'sporter_id', 'id');
+	}
+
 }

@@ -48,6 +48,9 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
+                    @role('sporter')
+                    	<li><a href="{{ url('/videos') }}">Videos</a></li>
+                    @endrole
                 </ul>
 
                 <!-- Right Side Of Navbar -->
