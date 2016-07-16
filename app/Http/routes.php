@@ -29,7 +29,7 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
 
 // URLS ONLY FOR SPORTERS
 Route::group(['middleware' => 'role:sporter'], function () {
