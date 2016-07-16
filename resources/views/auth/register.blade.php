@@ -66,6 +66,15 @@
                             </div>
                         </div>
 
+                         <div class="form-group">
+                         <label for="role-confirm" class="col-md-4 control-label">Kies uw rol:</label>
+                        <div class="col-md-6">
+                        Clubbestuur {{ Form::radio('role', '1') }} Coach {{ Form::radio('role', '2') }} Sporter {{ Form::radio('role', '3') }}
+							 </div>
+
+                       </div>
+
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
