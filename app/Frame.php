@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Frame extends Model
 {
-    protected $fillable = [
-       'phase_id','analysis_id'
-    ];
+	protected $fillable = [
+		'phase_id','analysis_id'
+	];
 }
