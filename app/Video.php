@@ -12,4 +12,10 @@ class Video extends Model
 		'location_id', 'sport_id', 'record_device_id','cover','cloud_fullPath','local_fullPath','cloud_synced'
 	];
 
+
+	public function analyses()
+	{
+		return $this->hasMany('App\Analyse');
+	}
+
 }

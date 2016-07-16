@@ -22,21 +22,29 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 
+// API
+
+Route::group(['prefix' => 'api/v1/'], function () {
 
 // API V1 //////////////////////////
 
-Route::get('/api/v1/users', ['middleware' => 'throttle:60,1', function (User $user) {
+Route::get('users', ['middleware' => 'throttle:60,1', function (User $user) {
     return $user::all();
 }]);
 
 // user video
-Route::get('api/v1/user/{id}/videos', ['middleware' => 'throttle:60,1', function ($id) {
+Route::get('user/{id}/videos', ['middleware' => 'throttle:60,1', function ($id) {
     return User::find($id)->videos;
 }]);
 
 
+// user video analyses
+Route::get('user/videos/{id}/analyses', ['middleware' => 'throttle:60,1', function ($id) {
+    return Video::find($id)->analyses;
+}]);
 
-
-Route::get('/api/v1/videos', ['middleware' => 'throttle:60,1', function (Video $video) {
+Route::get('videos', ['middleware' => 'throttle:60,1', function (Video $video) {
     return Video::all();
 }]);
+
+});
