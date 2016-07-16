@@ -34,8 +34,8 @@
 						<tr>
 							<td>{{$group->id}}</td>
 							<td>{{$group->name}}</td>
-							<td width="120">{!! link_to_route('groupdetail', 'potlood',array($group->id)) !!}</td>
-							<td width="120">{!! link_to_route('groupdetail', 'verwijder',array($group->id)) !!}</td>
+							<td width="120">{!! Html::decode(link_to_route('groupdetail', '<i class="fa fa-pencil fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
+							<td width="120">{!! Html::decode(link_to_route('groupdetail', '<i class="fa fa-trash fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
 						</tr>
 
 
