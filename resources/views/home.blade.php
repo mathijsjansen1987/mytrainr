@@ -9,7 +9,9 @@
 
                 <div class="panel-body">
 
-                    You are logged in!
+
+
+                    Welkom op het dashboard van Mytrainr je bent nu succesvol ingelogd!
 
                 </div>
             </div>
