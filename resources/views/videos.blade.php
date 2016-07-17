@@ -24,7 +24,7 @@
 							<th>ID</th>
 							<th>Datum</th>
 							<th>Locatie</th>
-							<th>Bewerken</th>
+							<th>Bekijken</th>
 							<th>Verwijderen</th>
 						</tr>
 
@@ -33,7 +33,7 @@
 								<td>{{$video->id}}</td>
 								<td>{{ $video->created_at->format('d-m-Y H:m:s') }}</td>
 								<td>{{ $video->location->name }}</td>
-								<td width="120">{!! Html::decode(link_to_route('groupdetail', '<i class="fa fa-pencil fa-1x" aria-hidden="true"></i>',array($video->id))) !!}</td>
+								<td width="120">{!! Html::decode(link_to_route('videodetail', '<i class="fa fa-eye fa-1x" aria-hidden="true"></i>',array($video->id))) !!}</td>
 								<td width="120">{!! Html::decode(link_to_route('groupdetail', '<i class="fa fa-trash fa-1x" aria-hidden="true"></i>',array($video->id))) !!}</td>
 							</tr>
 						@endforeach

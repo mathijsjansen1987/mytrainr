@@ -33,7 +33,8 @@ Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@in
 
 // URLS ONLY FOR SPORTERS
 Route::group(['middleware' => 'role:sporter'], function () {
-	Route::get('/videos', 'VideoController@index');
+	Route::get('/videos', ['as' => 'videos', 'uses' => 'VideoController@index']);
+	Route::get('/video/{id}', ['as' => 'videodetail', 'uses' => 'VideoController@detail']);
 });
 
 // URLS ONLY FOR COACHES
