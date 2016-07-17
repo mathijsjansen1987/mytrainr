@@ -13,7 +13,10 @@
 
 					<h1>Groep: {{$group->name}}</h1>
 
+					@if(count($users) > 0)
+
 					<h2>Sporters in deze groep</h2>
+
 					<table class="table">
 
 						<tr>
@@ -32,6 +35,7 @@
 
 						@endforeach
 					</table>
+					@endif
 
 
 
