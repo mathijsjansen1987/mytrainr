@@ -56,10 +56,10 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => 'your-key',
-            'secret' => 'your-secret',
-            'region' => 'your-region',
-            'bucket' => 'your-bucket',
+            'key' => 'AKIAIODRWNCRHZP4IJXA',
+            'secret' => '28dYYDHVDo+HJTKiiDTLu4cIawcWqRSk13El7Dm9',
+            'region' => 'us-west-2',
+            'bucket' => 'mytrainr',
         ],
 
     ],

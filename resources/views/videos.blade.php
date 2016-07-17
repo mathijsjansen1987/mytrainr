@@ -14,7 +14,7 @@
 						Hieronder staan je videos
 					</p>
 
-					{!! link_to_route('groupadd', 'Video toevoegen',array(),array('class'=>'btn btn-primary')) !!}
+					{!! link_to_route('videoadd', 'Video toevoegen',array(),array('class'=>'btn btn-primary')) !!}
 
 					<br><br>
 

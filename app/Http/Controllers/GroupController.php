@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Auth;
 use App\Group;
+use App\Sport;
+use App\Location;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -27,8 +29,13 @@ class GroupController extends Controller
 
 	public function detail($id)
 	{
+
+		$group = Group::find($id);
+
 		$view = view('groupdetail');
-		$view->group = Group::find($id);
+		$view->group = $group;
+		$view->users = $group->users;
+
 		return $view;
 	}
 
@@ -36,6 +43,31 @@ class GroupController extends Controller
 	{
 		$view = view('groupadd');
 		$view->group = new Group;
+		$view->sports = Sport::lists('name','id');
+		$view->locations = Location::lists('name','id');
 		return $view;
 	}
+
+	public function store(Request $request){
+
+		$input = $request->input();
+
+		$group = new Group();
+		$group->name = $input['name'];
+		$group->sport_id = $input['sport'];
+		$group->coach_id = Auth::user()->id;
+		$group->save();
+
+		return redirect()->route('groups');
+
+	}
+
+	public function destroy(Request $request,$id){
+
+		$group = Group::find($id);
+		$group->delete();
+		return redirect()->route('groups');
+	}
+
+
 }

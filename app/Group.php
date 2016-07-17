@@ -10,4 +10,15 @@ class Group extends Model
 		'sport_id','name','sporters'
 	];
 
+
+	public function sport()
+	{
+		return $this->belongsTo('App\Sport');
+	}
+
+	public function users()
+	{
+		return $this->belongsToMany('App\User','group_user','group_id','user_id');
+	}
+
 }

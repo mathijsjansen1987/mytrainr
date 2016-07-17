@@ -5,14 +5,14 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">Groep toevoegen</div>
+				<div class="panel-heading">Video toevoegen</div>
 
 				<div class="panel-body">
 
-					<h1>Groep toevoegen</h1>
+					<h1>Video toevoegen</h1>
 
+					 {!! Form::open(array('url'=>'apply/upload','method'=>'POST', 'files'=>true)) !!}
 
-					{!! Form::open(array('route'=> 'groupadd', 'files'=> true), "POST") !!}
 						{{ csrf_field() }}
 
 						<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -28,25 +28,10 @@
 								@endif
 							</div>
 						</div>
-						<br><br>
-						<div class="form-group{{ $errors->has('sport') ? ' has-error' : '' }}">
 
-							<label for="sport" class="col-md-1 control-label">Sport</label>
-
-							<div class="col-md-6">
-								{!! Form::select('sport', $sports, $group->sport_id) !!}
-
-								@if ($errors->has('sport'))
-								<span class="help-block">
-									<strong>{{ $errors->first('sport') }}</strong>
-								</span>
-								@endif
-							</div>
-
-						</div>
-						<br><br>
 						<div class="form-group">
-							<div class="col-md-1 col-md-offset-1">
+						<br><br>
+							<div class="col-md-6 col-md-offset-1">
 								<button type="submit" class="btn btn-primary">
 									<i class="fa fa-btn fa-plus"></i> Toevoegen
 								</button>

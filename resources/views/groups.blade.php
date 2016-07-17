@@ -19,12 +19,12 @@
 
 					<br><br>
 
-
 					<table class="table">
 
 						<tr>
 							<th>ID</th>
 							<th>Naam</th>
+							<th>Sport</th>
 							<th>Bewerken</th>
 							<th>Verwijderen</th>
 						</tr>
@@ -33,8 +33,9 @@
 							<tr>
 								<td>{{$group->id}}</td>
 								<td>{{$group->name}}</td>
+								<td>{{$group->sport->name}}</td>
 								<td width="120">{!! Html::decode(link_to_route('groupdetail', '<i class="fa fa-pencil fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
-								<td width="120">{!! Html::decode(link_to_route('groupdetail', '<i class="fa fa-trash fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
+								<td width="120">{!! Html::decode(link_to_route('groupremove', '<i class="fa fa-trash fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
 							</tr>
 						@endforeach
 					</table>
