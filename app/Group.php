@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
 	protected $fillable = [
-		'sport_id','name','sporters'
+		'name'
 	];
 
 
-	public function sport()
+	public function sports()
 	{
-		return $this->belongsTo('App\Sport');
+		 return $this->belongsToMany('App\Sport');
 	}
 
 	public function users()

@@ -19,7 +19,7 @@
 
 					<br><br>
 
-					@if(count($groups) > 1)
+					@if(count($groups) > 0)
 					<table class="table">
 						<tr>
 							<th></th>
@@ -33,7 +33,7 @@
 							<tr>
 								<td>{!! Html::decode(link_to_route('groups.view', '<i class="fa fa-eye fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
 								<td>{{$group->name}}</td>
-								<td>{{$group->sport->name}}</td>
+								<td>{{$group->sports->lists('name')}}</td>
 								<td width="120">{!! Html::decode(link_to_route('groups.edit', '<i class="fa fa-pencil fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
 								<td width="120">{!! Html::decode(link_to_route('groups.remove', '<i class="fa fa-trash fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
 							</tr>

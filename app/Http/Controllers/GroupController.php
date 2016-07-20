@@ -20,16 +20,13 @@ class GroupController extends Controller
 	{
 		$user = Auth::user();
 
-		$groups = $user->groups;
-
 		$view = view('groups.index');
-		$view->groups = $groups;
+		$view->groups = $user->groups;
 		return $view;
 	}
 
 	public function detail($id)
 	{
-
 		$group = Group::find($id);
 
 		$view = view('groups.view');
@@ -45,6 +42,7 @@ class GroupController extends Controller
 		$view->group = new Group;
 		$view->sports = Sport::lists('name','id');
 		$view->locations = Location::lists('name','id');
+
 		return $view;
 	}
 
@@ -54,21 +52,24 @@ class GroupController extends Controller
 		$view->group = Group::find($id);
 		$view->sports = Sport::lists('name','id');
 		$view->locations = Location::lists('name','id');
+
 		return $view;
 	}
 
 	public function store(Request $request){
 
 		$input = $request->input();
-
 		$group = new Group();
 		$group->name = $input['name'];
-		$group->sport_id = $input['sport'];
+
+		//$group->sport_id = $input['sports'];
 		$group->coach_id = Auth::user()->id;
 		$group->save();
 
-		return redirect()->route('groups.index');
+		$group->users()->attach(Auth::user()->id);
+		$group->sports()->sync($input['sports']);
 
+		return redirect()->route('groups.index');
 	}
 
 
@@ -83,7 +84,6 @@ class GroupController extends Controller
 		$group->save();
 
 		return redirect()->route('groups.index');
-
 	}
 
 
@@ -92,6 +92,7 @@ class GroupController extends Controller
 
 		$group = Group::find($id);
 		$group->delete();
+
 		return redirect()->route('groups.index');
 	}
 
