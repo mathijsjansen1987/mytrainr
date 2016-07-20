@@ -9,34 +9,66 @@
 
 				<div class="panel-body">
 
+					{!! link_to_route('videos.index','Naar overzicht') !!}
+
 					<h1>Video toevoegen</h1>
 
-					 {!! Form::open(array('url'=>'apply/upload','method'=>'POST', 'files'=>true)) !!}
+					{!! Form::open(array('route'=> 'videos.add', 'files'=> true), "POST") !!}
+					{{ csrf_field() }}
 
-						{{ csrf_field() }}
+					<div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
+						<label for="name" class="col-md-1 control-label">Bestand</label>
 
-						<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-							<label for="name" class="col-md-1 control-label">Naam</label>
+						<div class="col-md-12">
+							{{ Form::file('file')}}
 
-							<div class="col-md-6">
-								<input id="name" type="name" class="form-control" name="name" value="{{ old('name') }}">
+							@if ($errors->has('file'))
+							<span class="help-block">
+								<strong>{{ $errors->first('file') }}</strong>
+							</span>
+							@endif
+						</div>
+					</div>
+					<br><br>
+					<div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
 
-								@if ($errors->has('name'))
-								<span class="help-block">
-									<strong>{{ $errors->first('name') }}</strong>
-								</span>
-								@endif
-							</div>
+						<label for="sport" class="col-md-1 control-label">Locatie</label>
+
+						<div class="col-md-12">
+							{!! Form::select('location', $locations, $video->location) !!}
+
+							@if ($errors->has('location'))
+							<span class="help-block">
+								<strong>{{ $errors->first('location') }}</strong>
+							</span>
+							@endif
 						</div>
 
-						<div class="form-group">
-						<br><br>
-							<div class="col-md-6 col-md-offset-1">
-								<button type="submit" class="btn btn-primary">
-									<i class="fa fa-btn fa-plus"></i> Toevoegen
-								</button>
-							</div>
+					</div>
+					<br><br>
+					<div class="form-group{{ $errors->has('users') ? ' has-error' : '' }}">
+
+						<label for="sport" class="col-md-1 control-label">Sporters</label>
+
+						<div class="col-md-12">
+							{!! Form::select('users', $users, $video->users,array('multiple'=>'multiple','name'=>'users[]')) !!}
+
+							@if ($errors->has('users'))
+							<span class="help-block">
+								<strong>{{ $errors->first('users') }}</strong>
+							</span>
+							@endif
 						</div>
+
+					</div>
+					<br><br>
+					<div class="form-group">
+						<div class="col-md-12">
+							<button type="submit" class="btn btn-primary">
+								Toevoegen
+							</button>
+						</div>
+					</div>
 
 					{!! Form::close() !!}
 				</div>
@@ -45,5 +77,3 @@
 	</div>
 </div>
 @endsection
-
-

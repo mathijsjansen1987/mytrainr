@@ -22,20 +22,20 @@
 					@if(count($groups) > 0)
 					<table class="table">
 						<tr>
-							<th></th>
 							<th>Naam</th>
 							<th>Sporten</th>
 							<th>Sporters</th>
+							<th>Bekijken</th>
 							<th>Bewerken</th>
 							<th>Verwijderen</th>
 						</tr>
 
 						@foreach($groups as $group)
 						<tr>
-							<td>{!! Html::decode(link_to_route('groups.view', '<i class="fa fa-eye fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
 							<td>{{$group->name}}</td>
 							<td>{{ implode(', ', array_filter($group->sports->lists('name')->toArray())) }}</td>
 							<td>{{ implode(', ', array_filter($group->users->lists('name')->toArray())) }}</td>
+							<td>{!! Html::decode(link_to_route('groups.view', '<i class="fa fa-eye fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
 							<td width="120">{!! Html::decode(link_to_route('groups.edit', '<i class="fa fa-pencil fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
 							<td width="120">{!! Html::decode(link_to_route('groups.remove', '<i class="fa fa-trash fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
 						</tr>

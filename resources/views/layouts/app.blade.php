@@ -50,6 +50,7 @@
                     <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
                     @role('coach')
                     	<li><a href="{{ url('/groups') }}">Groepen</a></li>
+                    	<li><a href="{{ url('/videos') }}">Videos</a></li>
                     @endrole
                     @role('sporter')
                     	<li><a href="{{ url('/videos') }}">Videos</a></li>

@@ -40,6 +40,8 @@ Route::group(['middleware' => 'role:sporter'], function () {
 
 // URLS ONLY FOR COACHES
 Route::group(['middleware' => 'role:coach'], function () {
+
+	// Groups
 	Route::get('/groups', ['as' => 'groups.index', 'uses' => 'GroupController@index']);
 	Route::get('/group/add', ['as' => 'groups.add', 'uses' => 'GroupController@get_add']);
 	Route::post('/group/add', ['as' => 'groups.add', 'uses' => 'GroupController@store']);
@@ -47,6 +49,15 @@ Route::group(['middleware' => 'role:coach'], function () {
 	Route::post('/group/edit/{id}', ['as' => 'groups.edit', 'uses' => 'GroupController@update']);
 	Route::get('/group/remove/{id}', ['as' => 'groups.remove', 'uses' => 'GroupController@destroy']);
 	Route::get('/group/{id}', ['as' => 'groups.view', 'uses' => 'GroupController@get_view']);
+
+	// Videos
+	Route::get('/videos', ['as' => 'videos.index', 'uses' => 'VideoController@index']);
+	Route::get('/video/add', ['as' => 'videos.add', 'uses' => 'VideoController@get_add']);
+	Route::post('/video/add', ['as' => 'videos.add', 'uses' => 'VideoController@store']);
+	Route::get('/video/edit/{id}', ['as' => 'videos.edit', 'uses' => 'VideoController@get_edit']);
+	Route::post('/video/edit/{id}', ['as' => 'videos.edit', 'uses' => 'VideoController@update']);
+	Route::get('/video/remove/{id}', ['as' => 'videos.remove', 'uses' => 'VideoController@destroy']);
+	Route::get('/video/{id}', ['as' => 'videos.view', 'uses' => 'VideoController@get_view']);
 
 });
 
