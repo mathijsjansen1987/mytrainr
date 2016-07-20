@@ -15,14 +15,14 @@
 						Ook kun je nieuwe sporters toevoegen aan de groepen.
 					</p>
 
-					{!! link_to_route('groupadd', 'Groep toevoegen',array(),array('class'=>'btn btn-primary')) !!}
+					{!! link_to_route('groups.add', 'Groep toevoegen',array(),array('class'=>'btn btn-primary')) !!}
 
 					<br><br>
 
 					<table class="table">
 
 						<tr>
-							<th>ID</th>
+							<th></th>
 							<th>Naam</th>
 							<th>Sport</th>
 							<th>Bewerken</th>
@@ -31,11 +31,11 @@
 
 						@foreach($groups as $group)
 							<tr>
-								<td>{{$group->id}}</td>
+								<td>{!! Html::decode(link_to_route('groups.view', '<i class="fa fa-eye fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
 								<td>{{$group->name}}</td>
 								<td>{{$group->sport->name}}</td>
-								<td width="120">{!! Html::decode(link_to_route('groupdetail', '<i class="fa fa-pencil fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
-								<td width="120">{!! Html::decode(link_to_route('groupremove', '<i class="fa fa-trash fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
+								<td width="120">{!! Html::decode(link_to_route('groups.edit', '<i class="fa fa-pencil fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
+								<td width="120">{!! Html::decode(link_to_route('groups.remove', '<i class="fa fa-trash fa-1x" aria-hidden="true"></i>',array($group->id))) !!}</td>
 							</tr>
 						@endforeach
 					</table>

@@ -9,7 +9,7 @@
 
 				<div class="panel-body">
 
-					<h1>Groep toevoegen</h1>
+					<h1>Groep wijzigen</h1>
 
 					{!! Form::open(array('route'=> 'groups.add', 'files'=> true), "POST") !!}
 					{{ csrf_field() }}
@@ -18,7 +18,7 @@
 						<label for="name" class="col-md-1 control-label">Naam</label>
 
 						<div class="col-md-6">
-							<input id="name" type="name" class="form-control" name="name" value="{{ old('name') }}">
+							<input id="name" type="name" class="form-control" name="name" value="{{ $group->name }}">
 
 							@if ($errors->has('name'))
 							<span class="help-block">
@@ -33,11 +33,11 @@
 						<label for="sport" class="col-md-1 control-label">Sport</label>
 
 						<div class="col-md-6">
-							{!! Form::select('sports', $sports, $group->sport_id,array('multiple'=>'multiple','name'=>'sports[]')) !!}
+							{!! Form::select('sport', $sports, $group->sport_id) !!}
 
-							@if ($errors->has('sports'))
+							@if ($errors->has('sport'))
 							<span class="help-block">
-								<strong>{{ $errors->first('sports') }}</strong>
+								<strong>{{ $errors->first('sport') }}</strong>
 							</span>
 							@endif
 						</div>
@@ -46,8 +46,13 @@
 					<br><br>
 					<div class="form-group">
 						<div class="col-md-1 col-md-offset-1">
+
+							<button class="btn ">
+								Annuleren
+							</button>
+
 							<button type="submit" class="btn btn-primary">
-								Toevoegen
+								Wijzigen
 							</button>
 						</div>
 					</div>

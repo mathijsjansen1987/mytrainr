@@ -40,11 +40,13 @@ Route::group(['middleware' => 'role:sporter'], function () {
 
 // URLS ONLY FOR COACHES
 Route::group(['middleware' => 'role:coach'], function () {
-	Route::get('/groups', ['as' => 'groups', 'uses' => 'GroupController@index']);
-	Route::get('/group/add', ['as' => 'groupadd', 'uses' => 'GroupController@get_add']);
-	Route::post('/group/add', ['as' => 'groupadd', 'uses' => 'GroupController@store']);
-	Route::get('/group/remove/{id}', ['as' => 'groupremove', 'uses' => 'GroupController@destroy']);
-	Route::get('/group/{id}', ['as' => 'groupdetail', 'uses' => 'GroupController@detail']);
+	Route::get('/groups', ['as' => 'groups.index', 'uses' => 'GroupController@index']);
+	Route::get('/group/add', ['as' => 'groups.add', 'uses' => 'GroupController@get_add']);
+	Route::post('/group/add', ['as' => 'groups.add', 'uses' => 'GroupController@store']);
+	Route::get('/group/edit/{id}', ['as' => 'groups.edit', 'uses' => 'GroupController@get_edit']);
+	Route::post('/group/edit/{id}', ['as' => 'groups.edit', 'uses' => 'GroupController@update']);
+	Route::get('/group/remove/{id}', ['as' => 'groups.remove', 'uses' => 'GroupController@destroy']);
+	Route::get('/group/{id}', ['as' => 'groups.view', 'uses' => 'GroupController@detail']);
 
 });
 

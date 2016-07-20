@@ -48,6 +48,15 @@ class GroupController extends Controller
 		return $view;
 	}
 
+	public function get_edit($id)
+	{
+		$view = view('groups.edit');
+		$view->group = Group::find($id);
+		$view->sports = Sport::lists('name','id');
+		$view->locations = Location::lists('name','id');
+		return $view;
+	}
+
 	public function store(Request $request){
 
 		$input = $request->input();
@@ -58,15 +67,32 @@ class GroupController extends Controller
 		$group->coach_id = Auth::user()->id;
 		$group->save();
 
-		return redirect()->route('groups');
+		return redirect()->route('groups.index');
 
 	}
+
+
+	public function update(Request $request, $id){
+
+		$input = $request->input();
+
+		$group = Group::find($id);
+		$group->name = $input['name'];
+		$group->sport_id = $input['sport'];
+		$group->coach_id = Auth::user()->id;
+		$group->save();
+
+		return redirect()->route('groups.index');
+
+	}
+
+
 
 	public function destroy(Request $request,$id){
 
 		$group = Group::find($id);
 		$group->delete();
-		return redirect()->route('groups');
+		return redirect()->route('groups.index');
 	}
 
 
