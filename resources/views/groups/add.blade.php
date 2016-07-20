@@ -9,6 +9,8 @@
 
 				<div class="panel-body">
 
+					{!! link_to_route('groups.index','Naar overzicht') !!}
+
 					<h1>Groep toevoegen</h1>
 
 					{!! Form::open(array('route'=> 'groups.add', 'files'=> true), "POST") !!}

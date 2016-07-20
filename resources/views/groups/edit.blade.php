@@ -9,6 +9,8 @@
 
 				<div class="panel-body">
 
+					{!! link_to_route('groups.index','Naar overzicht') !!}
+
 					<h1>Groep wijzigen</h1>
 
 					{!! Form::open(array('route'=> array('groups.edit',$group->id), 'files'=> true), "POST") !!}

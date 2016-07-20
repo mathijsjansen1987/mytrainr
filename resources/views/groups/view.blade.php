@@ -9,7 +9,7 @@
 
 				<div class="panel-body">
 
-					{!! link_to_route('groups.index','Naar overzicht') !!}
+					{!! link_to_route('groups.index','Naar overzicht') !!} | {!! link_to_route('groups.edit','Groep bewerken',$group->id) !!}
 
 					<h1>Groep: {{$group->name}}</h1>
 
