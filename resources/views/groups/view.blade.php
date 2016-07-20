@@ -13,32 +13,40 @@
 
 					<h1>Groep: {{$group->name}}</h1>
 
-					@if(count($users) > 0)
+					<p>{{$group->description}}</p>
 
-					<h2>Sporters in deze groep</h2>
+					@if(count($group->sports) > 0)
+					<h2>Sporten die worden beoefend door de groep</h2>
 
 					<table class="table">
-
 						<tr>
 							<th>Naam</th>
-							<th>E-mailadres</th>
 						</tr>
-
-						@foreach($users as $user)
-
+						@foreach($group->sports as $sport)
 						<tr>
-							<td>{{$user->name}}</td>
-							<td><a href="mailto:{{$user->email}}">{{$user->email}}</a></td>
+							<td>{{$sport->name}}</td>
 						</tr>
-
-
-
 						@endforeach
 					</table>
 					@endif
 
 
+					@if(count($group->users) > 0)
+					<h2>Sporters in deze groep</h2>
 
+					<table class="table">
+						<tr>
+							<th>Naam</th>
+							<th>E-mailadres</th>
+						</tr>
+						@foreach($group->users as $user)
+						<tr>
+							<td>{{$user->name}}</td>
+							<td><a href="mailto:{{$user->email}}">{{$user->email}}</a></td>
+						</tr>
+						@endforeach
+					</table>
+					@endif
 				</div>
 			</div>
 		</div>

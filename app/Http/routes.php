@@ -24,7 +24,7 @@ use App\Video;
 
 // URLS FOR GUESTS (NOT LOGGED IN)
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Route::auth();
@@ -46,7 +46,7 @@ Route::group(['middleware' => 'role:coach'], function () {
 	Route::get('/group/edit/{id}', ['as' => 'groups.edit', 'uses' => 'GroupController@get_edit']);
 	Route::post('/group/edit/{id}', ['as' => 'groups.edit', 'uses' => 'GroupController@update']);
 	Route::get('/group/remove/{id}', ['as' => 'groups.remove', 'uses' => 'GroupController@destroy']);
-	Route::get('/group/{id}', ['as' => 'groups.view', 'uses' => 'GroupController@detail']);
+	Route::get('/group/{id}', ['as' => 'groups.view', 'uses' => 'GroupController@get_view']);
 
 });
 

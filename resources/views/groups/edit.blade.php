@@ -5,19 +5,19 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">Groep toevoegen</div>
+				<div class="panel-heading">{{$group->name}}</div>
 
 				<div class="panel-body">
 
 					<h1>Groep wijzigen</h1>
 
-					{!! Form::open(array('route'=> 'groups.add', 'files'=> true), "POST") !!}
+					{!! Form::open(array('route'=> array('groups.edit',$group->id), 'files'=> true), "POST") !!}
 					{{ csrf_field() }}
 
 					<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 						<label for="name" class="col-md-1 control-label">Naam</label>
 
-						<div class="col-md-6">
+						<div class="col-md-12">
 							<input id="name" type="name" class="form-control" name="name" value="{{ $group->name }}">
 
 							@if ($errors->has('name'))
@@ -28,16 +28,45 @@
 						</div>
 					</div>
 					<br><br>
+					<div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+						<label for="name" class="col-md-1 control-label">Beschrijving</label>
+
+						<div class="col-md-12">
+							<textarea id="description" class="form-control" name="description" rows="4">{{$group->description}}</textarea>
+							@if ($errors->has('description'))
+							<span class="help-block">
+								<strong>{{ $errors->first('description') }}</strong>
+							</span>
+							@endif
+						</div>
+					</div>
+					<br><br>
 					<div class="form-group{{ $errors->has('sport') ? ' has-error' : '' }}">
 
 						<label for="sport" class="col-md-1 control-label">Sport</label>
 
-						<div class="col-md-6">
-							{!! Form::select('sport', $sports, $group->sport_id) !!}
+						<div class="col-md-12">
+							{!! Form::select('sports', $sports, $group->sports->lists('id')->all(),array('multiple'=>'multiple','name'=>'sports[]')) !!}
 
-							@if ($errors->has('sport'))
+							@if ($errors->has('sports'))
 							<span class="help-block">
-								<strong>{{ $errors->first('sport') }}</strong>
+								<strong>{{ $errors->first('sports') }}</strong>
+							</span>
+							@endif
+						</div>
+
+					</div>
+					<br><br>
+					<div class="form-group{{ $errors->has('users') ? ' has-error' : '' }}">
+
+						<label for="sport" class="col-md-1 control-label">Sporters</label>
+
+						<div class="col-md-12">
+							{!! Form::select('users', $users, $group->users->lists('id')->all(),array('multiple'=>'multiple','name'=>'users[]')) !!}
+
+							@if ($errors->has('users'))
+							<span class="help-block">
+								<strong>{{ $errors->first('users') }}</strong>
 							</span>
 							@endif
 						</div>
@@ -45,12 +74,7 @@
 					</div>
 					<br><br>
 					<div class="form-group">
-						<div class="col-md-1 col-md-offset-1">
-
-							<button class="btn ">
-								Annuleren
-							</button>
-
+						<div class="col-md-12">
 							<button type="submit" class="btn btn-primary">
 								Wijzigen
 							</button>

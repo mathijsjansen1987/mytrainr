@@ -28,6 +28,20 @@
 						</div>
 					</div>
 					<br><br>
+					<div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+						<label for="name" class="col-md-1 control-label">Beschrijving</label>
+
+						<div class="col-md-12">
+							<textarea id="description" class="form-control" name="description" rows="4">{{ old('description') }}</textarea>
+
+							@if ($errors->has('description'))
+							<span class="help-block">
+								<strong>{{ $errors->first('description') }}</strong>
+							</span>
+							@endif
+						</div>
+					</div>
+					<br><br>
 					<div class="form-group{{ $errors->has('sport') ? ' has-error' : '' }}">
 
 						<label for="sport" class="col-md-1 control-label">Sport</label>

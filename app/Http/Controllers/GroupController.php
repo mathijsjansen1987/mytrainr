@@ -26,7 +26,7 @@ class GroupController extends Controller
 		return $view;
 	}
 
-	public function detail($id)
+	public function get_view($id)
 	{
 		$group = Group::find($id);
 
@@ -52,6 +52,7 @@ class GroupController extends Controller
 	{
 		$view = view('groups.edit');
 		$view->group = Group::find($id);
+		$view->users = User::all()->lists('name','id');
 		$view->sports = Sport::lists('name','id');
 		$view->locations = Location::lists('name','id');
 
@@ -63,6 +64,7 @@ class GroupController extends Controller
 		$input = $request->input();
 		$group = new Group();
 		$group->name = $input['name'];
+		$group->description = $input['description'];
 		$group->coach_id = Auth::user()->id;
 		$group->save();
 
@@ -79,9 +81,11 @@ class GroupController extends Controller
 
 		$group = Group::find($id);
 		$group->name = $input['name'];
-		$group->sport_id = $input['sport'];
-		$group->coach_id = Auth::user()->id;
+		$group->description = $input['description'];
 		$group->save();
+
+		$group->users()->sync($input['users']);
+		$group->sports()->sync($input['sports']);
 
 		return redirect()->route('groups.index');
 	}
@@ -91,6 +95,7 @@ class GroupController extends Controller
 	public function destroy(Request $request,$id){
 
 		$group = Group::find($id);
+		$group->users()->detach($group->users);
 		$group->delete();
 
 		return redirect()->route('groups.index');
