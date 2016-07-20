@@ -67,5 +67,17 @@ class UsersTableSeeder extends Seeder
 			'role_id' => 3,
 		]);
 
+		DB::table('sports')->insert([
+			'name' => 'schaatsen',
+		]);
+		DB::table('sports')->insert([
+			'name' => 'skeeleren',
+		]);
+		DB::table('sports')->insert([
+			'name' => 'droogtraining',
+		]);
+
+
+
 	}
 }

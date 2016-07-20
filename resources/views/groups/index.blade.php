@@ -19,8 +19,8 @@
 
 					<br><br>
 
+					@if(count($groups) > 1)
 					<table class="table">
-
 						<tr>
 							<th></th>
 							<th>Naam</th>
@@ -39,6 +39,7 @@
 							</tr>
 						@endforeach
 					</table>
+					@endif
 
 				</div>
 			</div>
