@@ -18,7 +18,7 @@ class VideoController extends Controller
      */
 	public function index()
 	{
-		$view = view('videos');
+		$view = view('videos.index');
 		$view->videos = Auth::user()->videos;
 
 		return $view;
@@ -26,7 +26,7 @@ class VideoController extends Controller
 
 	public function detail($id)
 	{
-		$view = view('videodetail');
+		$view = view('videos.view');
 		$view->video = Video::find($id);
 		return $view;
 	}
@@ -34,7 +34,7 @@ class VideoController extends Controller
 
 	public function get_add(){
 
-		$view = view('videoadd');
+		$view = view('videos.add');
 		$view->video = new Video();
 		return $view;
 

@@ -22,7 +22,7 @@ class GroupController extends Controller
 
 		$groups = $user->groups;
 
-		$view = view('groups.overview');
+		$view = view('groups.index');
 		$view->groups = $groups;
 		return $view;
 	}
@@ -32,7 +32,7 @@ class GroupController extends Controller
 
 		$group = Group::find($id);
 
-		$view = view('groups.detail');
+		$view = view('groups.view');
 		$view->group = $group;
 		$view->users = $group->users;
 
