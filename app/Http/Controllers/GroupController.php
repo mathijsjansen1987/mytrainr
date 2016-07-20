@@ -22,7 +22,7 @@ class GroupController extends Controller
 
 		$groups = $user->groups;
 
-		$view = view('groups');
+		$view = view('groups.overview');
 		$view->groups = $groups;
 		return $view;
 	}
@@ -32,7 +32,7 @@ class GroupController extends Controller
 
 		$group = Group::find($id);
 
-		$view = view('groupdetail');
+		$view = view('groups.detail');
 		$view->group = $group;
 		$view->users = $group->users;
 
@@ -41,7 +41,7 @@ class GroupController extends Controller
 
 	public function get_add()
 	{
-		$view = view('groupadd');
+		$view = view('groups.add');
 		$view->group = new Group;
 		$view->sports = Sport::lists('name','id');
 		$view->locations = Location::lists('name','id');
