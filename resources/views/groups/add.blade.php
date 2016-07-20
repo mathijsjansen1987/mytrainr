@@ -17,7 +17,7 @@
 					<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 						<label for="name" class="col-md-1 control-label">Naam</label>
 
-						<div class="col-md-6">
+						<div class="col-md-12">
 							<input id="name" type="name" class="form-control" name="name" value="{{ old('name') }}">
 
 							@if ($errors->has('name'))
@@ -32,7 +32,7 @@
 
 						<label for="sport" class="col-md-1 control-label">Sport</label>
 
-						<div class="col-md-6">
+						<div class="col-md-12">
 							{!! Form::select('sports', $sports, $group->sport_id,array('multiple'=>'multiple','name'=>'sports[]')) !!}
 
 							@if ($errors->has('sports'))
@@ -44,8 +44,24 @@
 
 					</div>
 					<br><br>
+					<div class="form-group{{ $errors->has('users') ? ' has-error' : '' }}">
+
+						<label for="sport" class="col-md-1 control-label">Sporters</label>
+
+						<div class="col-md-12">
+							{!! Form::select('users', $users, $group->users,array('multiple'=>'multiple','name'=>'users[]')) !!}
+
+							@if ($errors->has('users'))
+							<span class="help-block">
+								<strong>{{ $errors->first('users') }}</strong>
+							</span>
+							@endif
+						</div>
+
+					</div>
+					<br><br>
 					<div class="form-group">
-						<div class="col-md-1 col-md-offset-1">
+						<div class="col-md-12">
 							<button type="submit" class="btn btn-primary">
 								Toevoegen
 							</button>

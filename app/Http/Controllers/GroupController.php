@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Auth;
 use App\Group;
+use App\User;
 use App\Sport;
 use App\Location;
 use App\Http\Requests;
@@ -40,6 +41,7 @@ class GroupController extends Controller
 	{
 		$view = view('groups.add');
 		$view->group = new Group;
+		$view->users = User::all()->lists('name','id');
 		$view->sports = Sport::lists('name','id');
 		$view->locations = Location::lists('name','id');
 
@@ -61,12 +63,10 @@ class GroupController extends Controller
 		$input = $request->input();
 		$group = new Group();
 		$group->name = $input['name'];
-
-		//$group->sport_id = $input['sports'];
 		$group->coach_id = Auth::user()->id;
 		$group->save();
 
-		$group->users()->attach(Auth::user()->id);
+		$group->users()->sync($input['users']);
 		$group->sports()->sync($input['sports']);
 
 		return redirect()->route('groups.index');
