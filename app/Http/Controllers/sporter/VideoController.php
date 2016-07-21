@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\sporter;
 
 use Auth;
 use Storage;
@@ -10,6 +10,7 @@ use App\Location;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
+use App\Http\Controllers\Controller;
 
 class VideoController extends Controller
 {
@@ -82,7 +83,6 @@ class VideoController extends Controller
 		$video = new Video();
 		$video->local_fullPath = 'videos/'.$user_id.'/'.$filename;
 		// $videos->coach_id = Auth::user()->id;
-
 
 		Storage::put(
 			'videos/'.$user_id.'/'.$filename,

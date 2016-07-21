@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\sporter;
+
 use Auth;
 use App\Group;
 use App\User;
@@ -8,6 +9,7 @@ use App\Sport;
 use App\Location;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class GroupController extends Controller
 {
