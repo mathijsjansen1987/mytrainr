@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\coach;
+namespace App\Http\Controllers\Coach;
 
 use Auth;
 use Storage;
 use App\Video;
 use App\User;
+use App\Sport;
 use App\Location;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -32,11 +33,11 @@ class VideoController extends Controller
 
 	public function get_view($id)
 	{
-		$videos = Video::find($id);
+		$video = Video::find($id);
 
 		$view = view('videos.view');
-		$view->group = videos;
-		$view->users = $videos->users;
+		$view->video = $video;
+		$view->users = $video->users->lists('name');
 
 		return $view;
 	}
@@ -46,6 +47,7 @@ class VideoController extends Controller
 		$view = view('videos.add');
 		$view->video = new Video;
 		$view->users = User::all()->lists('name','id');
+		$view->sports = Sport::all()->lists('name','id');
 		$view->locations = Location::lists('name','id');
 
 		return $view;
@@ -81,15 +83,27 @@ class VideoController extends Controller
 
 		$input = $request->input();
 		$video = new Video();
-		$video->local_fullPath = 'videos/'.$user_id.'/'.$filename;
-		// $videos->coach_id = Auth::user()->id;
+		$video->local_fullPath = 'public/videos/'.$user_id.'/'.$filename;
+		$video->location_id = $request->input('location');
+		$video->sport_id = $request->input('sports');
+
+		$video->name = $filename;
 
 		Storage::put(
-			'videos/'.$user_id.'/'.$filename,
+			'public/videos/'.$user_id.'/'.$filename,
 			file_get_contents($request->file('file')->getRealPath())
 		);
 
+		Storage::disk('s3')->put(
+			'public/videos/'.$user_id.'/'.$filename,
+			file_get_contents($request->file('file')->getRealPath())
+		);
+
+
 		$video->save();
+
+
+		$video->users()->sync($request->input('users'));
 
 		/*	$videos->users()->sync($input['users']);
 		$videos->sports()->sync($input['sports']);*/
@@ -117,9 +131,16 @@ class VideoController extends Controller
 
 	public function destroy(Request $request,$id){
 
-		$videos = Group::find($id);
-		$videos->users()->detach($videos->users);
-		$videos->delete();
+
+		$video = Video::find($id);
+		// $videos->users()->detach($videos->users);
+
+		// remove file local
+		Storage::delete($video->local_fullPath);
+		Storage::disk('s3')->delete($video->local_fullPath);
+
+		// remove video
+		$video->delete();
 
 		return redirect()->route('videos.index');
 	}

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\sporter;
+namespace App\Http\Controllers\Sporter;
 
 use Auth;
 use Storage;

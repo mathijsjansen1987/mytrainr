@@ -23,9 +23,14 @@ class Video extends Model
 		return $this->belongsTo('App\Location');
 	}
 
-	public function user()
+	public function users()
 	{
-		return $this->belongsTo('App\User', 'sporter_id', 'id');
+		return $this->belongsToMany('App\User','user_video','video_id','user_id');
+	}
+
+	public function sport()
+	{
+		return $this->belongsTo('App\Sport');
 	}
 
 }

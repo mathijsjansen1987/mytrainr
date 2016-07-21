@@ -33,15 +33,15 @@ Route::auth();
 // URLS ONLY FOR SPORTERS
 Route::group(['middleware' => 'role:sporter'], function () {
 
-/*
+
 	// dashboard
-	Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'sporter\DashboardController@index']);
+	Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'Sporter\DashboardController@index']);
 
 	// Videos
-	Route::get('/videos', ['as' => 'videos', 'uses' => 'VideoController@index']);
-	Route::get('/video/add', ['as' => 'videoadd', 'uses' => 'VideoController@get_add']);
-	Route::get('/video/{id}', ['as' => 'videodetail', 'uses' => 'VideoController@detail']);
-*/
+	Route::get('/videos', ['as' => 'videos', 'uses' => 'Sporter\VideoController@index']);
+	Route::get('/video/add', ['as' => 'videoadd', 'uses' => 'Sporter\VideoController@get_add']);
+	Route::get('/video/{id}', ['as' => 'videodetail', 'uses' => 'Sporter\VideoController@detail']);
+
 
 });
 
@@ -49,25 +49,25 @@ Route::group(['middleware' => 'role:sporter'], function () {
 Route::group(['middleware' => 'role:coach'], function () {
 
 	// dashboard
-	Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'coach\DashboardController@index']);
+	Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'Coach\DashboardController@index']);
 
 	// Groups
-	Route::get('/groups', ['as' => 'groups.index', 'uses' => 'coach\GroupController@index']);
-	Route::get('/group/add', ['as' => 'groups.add', 'uses' => 'coach\GroupController@get_add']);
-	Route::post('/group/add', ['as' => 'groups.add', 'uses' => 'coach\GroupController@store']);
-	Route::get('/group/edit/{id}', ['as' => 'groups.edit', 'uses' => 'coach\GroupController@get_edit']);
-	Route::post('/group/edit/{id}', ['as' => 'groups.edit', 'uses' => 'coach\GroupController@update']);
-	Route::get('/group/remove/{id}', ['as' => 'groups.remove', 'uses' => 'coach\GroupController@destroy']);
-	Route::get('/group/{id}', ['as' => 'groups.view', 'uses' => 'coach\GroupController@get_view']);
+	Route::get('/groups', ['as' => 'groups.index', 'uses' => 'Coach\GroupController@index']);
+	Route::get('/group/add', ['as' => 'groups.add', 'uses' => 'Coach\GroupController@get_add']);
+	Route::post('/group/add', ['as' => 'groups.add', 'uses' => 'Coach\GroupController@store']);
+	Route::get('/group/edit/{id}', ['as' => 'groups.edit', 'uses' => 'Coach\GroupController@get_edit']);
+	Route::post('/group/edit/{id}', ['as' => 'groups.edit', 'uses' => 'Coach\GroupController@update']);
+	Route::get('/group/remove/{id}', ['as' => 'groups.remove', 'uses' => 'Coach\GroupController@destroy']);
+	Route::get('/group/{id}', ['as' => 'groups.view', 'uses' => 'Coach\GroupController@get_view']);
 
 	// Videos
-	Route::get('/videos', ['as' => 'videos.index', 'uses' => 'coach\VideoController@index']);
-	Route::get('/video/add', ['as' => 'videos.add', 'uses' => 'coach\VideoController@get_add']);
-	Route::post('/video/add', ['as' => 'videos.add', 'uses' => 'coach\VideoController@store']);
-	Route::get('/video/edit/{id}', ['as' => 'videos.edit', 'uses' => 'coach\VideoController@get_edit']);
-	Route::post('/video/edit/{id}', ['as' => 'videos.edit', 'uses' => 'coach\VideoController@update']);
-	Route::get('/video/remove/{id}', ['as' => 'videos.remove', 'uses' => 'coach\VideoController@destroy']);
-	Route::get('/video/{id}', ['as' => 'videos.view', 'uses' => 'coach\VideoController@get_view']);
+	Route::get('/videos', ['as' => 'videos.index', 'uses' => 'Coach\VideoController@index']);
+	Route::get('/video/add', ['as' => 'videos.add', 'uses' => 'Coach\VideoController@get_add']);
+	Route::post('/video/add', ['as' => 'videos.add', 'uses' => 'Coach\VideoController@store']);
+	Route::get('/video/edit/{id}', ['as' => 'videos.edit', 'uses' => 'Coach\VideoController@get_edit']);
+	Route::post('/video/edit/{id}', ['as' => 'videos.edit', 'uses' => 'Coach\VideoController@update']);
+	Route::get('/video/remove/{id}', ['as' => 'videos.remove', 'uses' => 'Coach\VideoController@destroy']);
+	Route::get('/video/{id}', ['as' => 'videos.view', 'uses' => 'Coach\VideoController@get_view']);
 
 });
 

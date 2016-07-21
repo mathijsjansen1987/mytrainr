@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\coach;
+namespace App\Http\Controllers\Coach;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;

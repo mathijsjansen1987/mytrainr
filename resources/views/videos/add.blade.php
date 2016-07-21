@@ -30,6 +30,22 @@
 						</div>
 					</div>
 					<br><br>
+					<div class="form-group{{ $errors->has('sport') ? ' has-error' : '' }}">
+
+						<label for="sport" class="col-md-1 control-label">Sport</label>
+
+						<div class="col-md-12">
+							{!! Form::select('sports', $sports, $video->sport_id) !!}
+
+							@if ($errors->has('sports'))
+							<span class="help-block">
+								<strong>{{ $errors->first('sports') }}</strong>
+							</span>
+							@endif
+						</div>
+
+					</div>
+					<br><br>
 					<div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
 
 						<label for="sport" class="col-md-1 control-label">Locatie</label>

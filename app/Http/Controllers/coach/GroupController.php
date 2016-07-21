@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\coach;
+namespace App\Http\Controllers\Coach;
 use Auth;
 use App\Group;
 use App\User;
