@@ -29,11 +29,10 @@ class LocationController extends Controller
 
 	public function get_view($id)
 	{
-		$group = Group::find($id);
+		$location = Location::find($id);
 
-		$view = view('groups.view');
-		$view->group = $group;
-		$view->users = $group->users;
+		$view = view('locations.view');
+		$view->location = $location;
 
 		return $view;
 	}
@@ -48,11 +47,8 @@ class LocationController extends Controller
 
 	public function get_edit($id)
 	{
-		$view = view('groups.edit');
-		$view->group = Group::find($id);
-		$view->users = User::all()->lists('name','id');
-		$view->sports = Sport::lists('name','id');
-		$view->locations = Location::lists('name','id');
+		$view = view('locations.edit');
+		$view->location = Location::find($id);
 
 		return $view;
 	}
@@ -75,15 +71,13 @@ class LocationController extends Controller
 
 		$input = $request->input();
 
-		$group = Group::find($id);
-		$group->name = $input['name'];
-		$group->description = $input['description'];
-		$group->save();
+		$location = Location::find($id);
+		$location->name = $input['name'];
+		$location->lat = $input['lat'];
+		$location->long = $input['long'];
+		$location->save();
 
-		$group->users()->sync($input['users']);
-		$group->sports()->sync($input['sports']);
-
-		return redirect()->route('groups.index');
+		return redirect()->route('locations.index');
 	}
 
 
