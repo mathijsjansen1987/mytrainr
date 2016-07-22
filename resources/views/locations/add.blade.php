@@ -31,10 +31,10 @@
 					</div>
 					<br><br>
 					<div class="form-group{{ $errors->has('lat') ? ' has-error' : '' }}">
-						<label for="name" class="col-md-1 control-label">Lat</label>
+						<label for="lat" class="col-md-1 control-label">Lat</label>
 
 						<div class="col-md-3">
-							<input id="lat" type="lat" class="form-control" lat="lat" value="{{ old('lat') }}">
+							<input id="lat" type="lat" class="form-control" name="lat" value="{{ old('lat') }}">
 
 							@if ($errors->has('lat'))
 							<span class="help-block">
@@ -44,15 +44,15 @@
 						</div>
 					</div>
 					<br><br>
-					<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-						<label for="name" class="col-md-1 control-label">Long</label>
+					<div class="form-group{{ $errors->has('long') ? ' has-error' : '' }}">
+						<label for="long" class="col-md-1 control-label">Long</label>
 
 						<div class="col-md-3">
-							<input id="name" type="name" class="form-control" name="name" value="{{ old('name') }}">
+							<input id="long" type="long" class="form-control" name="long" value="{{ old('long') }}">
 
-							@if ($errors->has('name'))
+							@if ($errors->has('long'))
 							<span class="help-block">
-								<strong>{{ $errors->first('name') }}</strong>
+								<strong>{{ $errors->first('long') }}</strong>
 							</span>
 							@endif
 						</div>

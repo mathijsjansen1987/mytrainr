@@ -60,6 +60,7 @@ class LocationController extends Controller
 	public function store(Request $request){
 
 		$input = $request->input();
+
 		$location = new Location();
 		$location->name = $input['name'];
 		$location->lat = $input['lat'];
@@ -89,11 +90,10 @@ class LocationController extends Controller
 
 	public function destroy(Request $request,$id){
 
-		$group = Group::find($id);
-		$group->users()->detach($group->users);
-		$group->delete();
+		$location = Location::find($id);
+		$location->delete();
 
-		return redirect()->route('groups.index');
+		return redirect()->route('locations.index');
 	}
 
 
