@@ -9,7 +9,7 @@
 
 				<div class="panel-body">
 
-					{!! link_to_route('videos.index','Naar overzicht') !!} | {!! link_to_route('videos.edit','Video bewerken',$video->id) !!}
+					{!! link_to_route('videos.index','Naar overzicht') !!} | {!! link_to_route('videos.edit','video bewerken',$video->id) !!}
 
 					<h1>Video: {{$video->name}}</h1>
 

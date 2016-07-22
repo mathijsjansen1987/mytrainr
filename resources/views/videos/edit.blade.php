@@ -5,39 +5,26 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">{{$group->name}}</div>
+				<div class="panel-heading">Video wijzigen</div>
 
 				<div class="panel-body">
 
-					{!! link_to_route('groups.index','Naar overzicht') !!}
+					{!! link_to_route('videos.index','Naar overzicht') !!}
 
-					<h1>Groep wijzigen</h1>
+					<h1>Video wijzigen</h1>
 
-					{!! Form::open(array('route'=> array('groups.edit',$group->id), 'files'=> true), "POST") !!}
+					{!! Form::open(array('route'=> array('videos.edit',$video->id), 'files'=> true), "POST") !!}
 					{{ csrf_field() }}
 
-					<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-						<label for="name" class="col-md-1 control-label">Naam</label>
+					<div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
+						<label for="name" class="col-md-1 control-label">Bestand</label>
 
 						<div class="col-md-12">
-							<input id="name" type="name" class="form-control" name="name" value="{{ $group->name }}">
+							{{ Form::file('file')}}
 
-							@if ($errors->has('name'))
+							@if ($errors->has('file'))
 							<span class="help-block">
-								<strong>{{ $errors->first('name') }}</strong>
-							</span>
-							@endif
-						</div>
-					</div>
-					<br><br>
-					<div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-						<label for="name" class="col-md-1 control-label">Beschrijving</label>
-
-						<div class="col-md-12">
-							<textarea id="description" class="form-control" name="description" rows="4">{{$group->description}}</textarea>
-							@if ($errors->has('description'))
-							<span class="help-block">
-								<strong>{{ $errors->first('description') }}</strong>
+								<strong>{{ $errors->first('file') }}</strong>
 							</span>
 							@endif
 						</div>
@@ -48,7 +35,7 @@
 						<label for="sport" class="col-md-1 control-label">Sport</label>
 
 						<div class="col-md-12">
-							{!! Form::select('sports', $sports, $group->sports->lists('id')->all(),array('multiple'=>'multiple','name'=>'sports[]')) !!}
+							{!! Form::select('sports', $sports, $video->sport_id) !!}
 
 							@if ($errors->has('sports'))
 							<span class="help-block">
@@ -59,12 +46,30 @@
 
 					</div>
 					<br><br>
+					<div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+
+						<label for="sport" class="col-md-1 control-label">Locatie</label>
+
+						<div class="col-md-12">
+							{!! Form::select('location', $locations, $video->location) !!}
+
+							@if ($errors->has('location'))
+							<span class="help-block">
+								<strong>{{ $errors->first('location') }}</strong>
+							</span>
+							@endif
+						</div>
+
+					</div>
+					<br><br>
+
+
 					<div class="form-group{{ $errors->has('users') ? ' has-error' : '' }}">
 
 						<label for="sport" class="col-md-1 control-label">Sporters</label>
 
 						<div class="col-md-12">
-							{!! Form::select('users', $users, $group->users->lists('id')->all(),array('multiple'=>'multiple','name'=>'users[]')) !!}
+							{!! Form::select('users', $users, $video->users->lists('id')->toArray(),array('multiple'=>'multiple','name'=>'users[]')) !!}
 
 							@if ($errors->has('users'))
 							<span class="help-block">
