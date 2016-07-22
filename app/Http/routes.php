@@ -70,7 +70,7 @@ Route::group(['middleware' => 'role:coach'], function () {
 	Route::get('/video/{id}', ['as' => 'videos.view', 'uses' => 'Coach\VideoController@get_view']);
 
 	// Locations
-	Route::get('/locations', ['as' => 'groups.index', 'uses' => 'Coach\LocationController@index']);
+	Route::get('/locations', ['as' => 'locations.index', 'uses' => 'Coach\LocationController@index']);
 	Route::get('/location/add', ['as' => 'locations.add', 'uses' => 'Coach\LocationController@get_add']);
 	Route::post('/location/add', ['as' => 'locations.add', 'uses' => 'Coach\LocationController@store']);
 	Route::get('/location/edit/{id}', ['as' => 'locations.edit', 'uses' => 'Coach\LocationController@get_edit']);
