@@ -69,6 +69,15 @@ Route::group(['middleware' => 'role:coach'], function () {
 	Route::get('/video/remove/{id}', ['as' => 'videos.remove', 'uses' => 'Coach\VideoController@destroy']);
 	Route::get('/video/{id}', ['as' => 'videos.view', 'uses' => 'Coach\VideoController@get_view']);
 
+	// Analysis
+	Route::get('/analysis', ['as' => 'analysis.index', 'uses' => 'Coach\AnalysisController@index']);
+	Route::get('/analyse/add', ['as' => 'analysis.add', 'uses' => 'Coach\AnalysisController@get_add']);
+	Route::post('/analyse/add', ['as' => 'analysis.add', 'uses' => 'Coach\AnalysisController@store']);
+	Route::get('/analyse/edit/{id}', ['as' => 'analysis.edit', 'uses' => 'Coach\AnalysisController@get_edit']);
+	Route::post('/analyse/edit/{id}', ['as' => 'analysis.edit', 'uses' => 'Coach\AnalysisController@update']);
+	Route::get('/analyse/remove/{id}', ['as' => 'analysis.remove', 'uses' => 'Coach\AnalysisController@destroy']);
+	Route::get('/analyse/{id}', ['as' => 'analysis.view', 'uses' => 'Coach\AnalysisController@get_view']);
+
 	// Locations
 	Route::get('/locations', ['as' => 'locations.index', 'uses' => 'Coach\LocationController@index']);
 	Route::get('/location/add', ['as' => 'locations.add', 'uses' => 'Coach\LocationController@get_add']);
