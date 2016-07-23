@@ -42,6 +42,7 @@ class TrainingController extends Controller
 	{
 		$view = view('trainings.add');
 		$view->training = new Training;
+		$view->locations = Location::lists('name','id');
 
 		return $view;
 	}
@@ -58,11 +59,14 @@ class TrainingController extends Controller
 
 		$input = $request->input();
 
-		$sport = new Sport();
-		$sport->name = $input['name'];
-		$sport->save();
+		$training = new Training();
+		$training->time_from = $input['time_from'];
+		$training->time_till = $input['time_till'];
+		$training->group_id = $input['group'];
+		$training->location_id = $input['location'];
+		$training->save();
 
-		return redirect()->route('sports.index');
+		return redirect()->route('trainings.index');
 	}
 
 

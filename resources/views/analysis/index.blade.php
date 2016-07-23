@@ -18,8 +18,7 @@
 
 					<br><br>
 
-					@if(count($analysis) > 0)
-					<table class="table">
+					@if(count($analysis) > 0)<table class="table">
 						<tr>
 							<th></th>
 							<th>Video</th>
