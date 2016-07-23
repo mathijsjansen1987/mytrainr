@@ -49,13 +49,14 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url('/dashboard') }}"><i class="fa fa-home" aria-hidden="true"></i> Dashboard</a></li>
                     @role('coach')
-                    	<li><a href="{{ url('/groups') }}">Groepen</a></li>
-                    	<li><a href="{{ url('/videos') }}">Videos</a></li>
-                    	<li><a href="{{ url('/analysis') }}">Analyses</a></li>
-                    	<li><a href="{{ url('/locations') }}">Locaties</a></li>
-                    	<li><a href="{{ url('/sports') }}">Sporten</a></li>
+                    	<li><a href="{{ url('/groups') }}"><i class="fa fa-users" aria-hidden="true"></i> Groepen</a></li>
+                    	<li><a href="{{ url('/trainings') }}"><i class="fa fa-book" aria-hidden="true"></i> Trainingen</a></li>
+                    	<li><a href="{{ url('/videos') }}"><i class="fa fa-video-camera" aria-hidden="true"></i> Videos</a></li>
+                    	<li><a href="{{ url('/analysis') }}"><i class="fa fa-line-chart" aria-hidden="true"></i> Analyses</a></li>
+                    	<li><a href="{{ url('/locations') }}"><i class="fa fa-map-marker" aria-hidden="true"></i> Locaties</a></li>
+                    	<li><a href="{{ url('/sports') }}"><i class="fa fa-futbol-o" aria-hidden="true"></i> Sporten</a></li>
 
                     @endrole
                     @role('sporter')

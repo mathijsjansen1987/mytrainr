@@ -21,6 +21,7 @@
 					@if(count($sports) > 0)
 					<table class="table">
 						<tr>
+							<th></th>
 							<th>Naam</th>
 							<th>Aangemaakt</th>
 							<th>Bewerken</th>
@@ -29,6 +30,7 @@
 
 						@foreach($sports as $sport)
 						<tr>
+							<td width="35"><i class="fa fa-futbol-o" aria-hidden="true"></i></td>
 							<td>{{$sport->name}}</td>
 							<td>{{$sport->created_at->format('d-m-Y H:i')}}</td>
 							<td width="120">{!! Html::decode(link_to_route('sports.edit', '<i class="fa fa-pencil fa-1x" aria-hidden="true"></i>',array($sport->id))) !!}</td>

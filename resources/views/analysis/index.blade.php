@@ -21,17 +21,17 @@
 					@if(count($analysis) > 0)
 					<table class="table">
 						<tr>
-							<th>Id</th>
+							<th></th>
 							<th>Video</th>
 							<th>Aangemaakt</th>
 							<th>Bekijken</th>
-							<th>Bewerken</th>
+							<th>Bewerken</th>s
 							<th>Verwijderen</th>
 						</tr>
 
 						@foreach($analysis as $analyse)
 						<tr>
-							<td>{{$analyse->id}}</td>
+							<td width="35"><i class="fa fa-line-chart" aria-hidden="true"></i></td>
 							<td>{{$analyse->video->name}}</td>
 							<td>{{$analyse->created_at->format('d-m-Y H:i')}}</td>
 							<td>{!! Html::decode(link_to_route('analysis.view', '<i class="fa fa-eye fa-1x" aria-hidden="true"></i>',array($analyse->id))) !!}</td>

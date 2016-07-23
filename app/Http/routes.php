@@ -94,7 +94,15 @@ Route::group(['middleware' => 'role:coach'], function () {
 	Route::get('/sport/edit/{id}', ['as' => 'sports.edit', 'uses' => 'Coach\SportController@get_edit']);
 	Route::post('/sport/edit/{id}', ['as' => 'sports.edit', 'uses' => 'Coach\SportController@update']);
 	Route::get('/sport/remove/{id}', ['as' => 'sports.remove', 'uses' => 'Coach\SportController@destroy']);
-	Route::get('/sport/{id}', ['as' => 'sports.view', 'uses' => 'Coach\SportController@get_view']);
+
+	// Training
+	Route::get('/trainings', ['as' => 'trainings.index', 'uses' => 'Coach\TrainingController@index']);
+	Route::get('/training/add', ['as' => 'trainings.add', 'uses' => 'Coach\TrainingController@get_add']);
+	Route::post('/training/add', ['as' => 'trainings.add', 'uses' => 'Coach\TrainingController@store']);
+	Route::get('/training/edit/{id}', ['as' => 'trainings.edit', 'uses' => 'Coach\TrainingController@get_edit']);
+	Route::post('/training/edit/{id}', ['as' => 'trainings.edit', 'uses' => 'Coach\TrainingController@update']);
+	Route::get('/training/remove/{id}', ['as' => 'trainings.remove', 'uses' => 'Coach\TrainingController@destroy']);
+	Route::get('/training/{id}', ['as' => 'trainings.view', 'uses' => 'Coach\TrainingController@get_view']);
 
 });
 

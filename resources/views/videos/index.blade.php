@@ -20,6 +20,7 @@
 					@if(count($videos) > 0)
 					<table class="table">
 						<tr>
+							<th></th>
 							<th>Naam</th>
 							<th>Bekijken</th>
 							<th>Bewerken</th>
@@ -28,6 +29,7 @@
 
 						@foreach($videos as $video)
 						<tr>
+							<td width="35"><i class="fa fa-video-camera" aria-hidden="true"></i> </td>
 							<td>{{$video->name}}</td>
 							<td>{!! Html::decode(link_to_route('videos.view', '<i class="fa fa-eye fa-1x" aria-hidden="true"></i>',array($video->id))) !!}</td>
 							<td width="120">{!! Html::decode(link_to_route('videos.edit', '<i class="fa fa-pencil fa-1x" aria-hidden="true"></i>',array($video->id))) !!}</td>

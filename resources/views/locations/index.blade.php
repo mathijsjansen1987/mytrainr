@@ -21,9 +21,8 @@
 					@if(count($locations) > 0)
 					<table class="table">
 						<tr>
+							<th></th>
 							<th>Naam</th>
-							<th>Lat</th>
-							<th>Long</th>
 							<th>Bekijken</th>
 							<th>Bewerken</th>
 							<th>Verwijderen</th>
@@ -31,9 +30,8 @@
 
 						@foreach($locations as $location)
 						<tr>
+							<td width="35"><i class="fa fa-map-marker" aria-hidden="true"></i> </td>
 							<td>{{$location->name}}</td>
-							<td>{{$location->lat}}</td>
-							<td>{{$location->long}}</td>
 							<td>{!! Html::decode(link_to_route('locations.view', '<i class="fa fa-eye fa-1x" aria-hidden="true"></i>',array($location->id))) !!}</td>
 							<td width="120">{!! Html::decode(link_to_route('locations.edit', '<i class="fa fa-pencil fa-1x" aria-hidden="true"></i>',array($location->id))) !!}</td>
 							<td width="120">{!! Html::decode(link_to_route('locations.remove', '<i class="fa fa-trash fa-1x" aria-hidden="true"></i>',array($location->id))) !!}</td>
