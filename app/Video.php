@@ -33,4 +33,9 @@ class Video extends Model
 		return $this->belongsTo('App\Sport');
 	}
 
+	public function frames(){
+
+		return $this->belongsToMany('App\Frame');
+	}
+
 }

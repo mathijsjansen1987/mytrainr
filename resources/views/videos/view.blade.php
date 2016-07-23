@@ -23,7 +23,7 @@
 						Your browser does not support the video tag.
 					</video>
 					<br>
-					<button onclick="javascript:setPlaybackrate(1)">1.0x</button><button onclick="javascript:setPlaybackrate(0.5)">0.5x</button><button onclick="javascript:setPlaybackrate(0.1)">0.1x</button><button onclick="javascript:setPlaybackrate(0.01)">0.01x</button>
+					<button onclick="setPlaybackrate(1)">1.0x</button><button onclick="setPlaybackrate(0.5)">0.5x</button><button onclick="setPlaybackrate(0.1)">0.1x</button><button onclick="setPlaybackrate(0.01)">0.01x</button>
 
 				</div>
 			</div>
@@ -35,10 +35,7 @@
 	var vid = document.getElementById("video");
 	function setPlaybackrate(value){
 		vid.playbackRate = value;
-
 	}
-
-
 </script>
 
 @endsection

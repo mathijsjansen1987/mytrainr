@@ -30,10 +30,11 @@ class AnalysisController extends Controller
 
 	public function get_view($id)
 	{
-		$location = Location::find($id);
+		$analyse = Analyse::find($id);
 
-		$view = view('locations.view');
-		$view->location = $location;
+		$view = view('analysis.view');
+		$view->analyse = $analyse;
+		$view->video = $analyse->video;
 
 		return $view;
 	}
