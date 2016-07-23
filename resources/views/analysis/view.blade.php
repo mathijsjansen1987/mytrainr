@@ -13,12 +13,11 @@
 
 					<h4>Analyse: {{$analyse->created_at->format('d-m-Y H:i')}} ({{$analyse->video->name}})</h4>
 
-					<video id="video" width="720" height="480" preload controls>
+					<video id="video" width="720" height="400" preload>
 						<source src="http://db2ih2bbf7xxb.cloudfront.net/{{$analyse->video->local_fullPath}}" type="video/mp4">
 						Your browser does not support the video tag.
 					</video>
-					<br>
-					Snelheid: <button onclick="setPlaybackrate(1)">1.0x</button><button onclick="setPlaybackrate(0.5)">0.5x</button><button onclick="setPlaybackrate(0.1)">0.1x</button><button onclick="setPlaybackrate(0.01)">0.01x</button>
+					<br>Snelheid: <button onclick="setPlaybackrate(1)">1.0x</button><button onclick="setPlaybackrate(0.5)">0.5x</button><button onclick="setPlaybackrate(0.1)">0.1x</button><button onclick="setPlaybackrate(0.01)">0.01x</button>
 
 					<h4>Frames/selecties</h4>
 
