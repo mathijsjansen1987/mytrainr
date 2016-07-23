@@ -87,6 +87,15 @@ Route::group(['middleware' => 'role:coach'], function () {
 	Route::get('/location/remove/{id}', ['as' => 'locations.remove', 'uses' => 'Coach\LocationController@destroy']);
 	Route::get('/location/{id}', ['as' => 'locations.view', 'uses' => 'Coach\LocationController@get_view']);
 
+	// Sports
+	Route::get('/sports', ['as' => 'sports.index', 'uses' => 'Coach\SportController@index']);
+	Route::get('/sport/add', ['as' => 'sports.add', 'uses' => 'Coach\SportController@get_add']);
+	Route::post('/sport/add', ['as' => 'sports.add', 'uses' => 'Coach\SportController@store']);
+	Route::get('/sport/edit/{id}', ['as' => 'sports.edit', 'uses' => 'Coach\SportController@get_edit']);
+	Route::post('/sport/edit/{id}', ['as' => 'sports.edit', 'uses' => 'Coach\SportController@update']);
+	Route::get('/sport/remove/{id}', ['as' => 'sports.remove', 'uses' => 'Coach\SportController@destroy']);
+	Route::get('/sport/{id}', ['as' => 'sports.view', 'uses' => 'Coach\SportController@get_view']);
+
 });
 
 // URLS ONLY FOR CLUBS

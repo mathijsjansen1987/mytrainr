@@ -55,6 +55,7 @@
                     	<li><a href="{{ url('/videos') }}">Videos</a></li>
                     	<li><a href="{{ url('/analysis') }}">Analyses</a></li>
                     	<li><a href="{{ url('/locations') }}">Locaties</a></li>
+                    	<li><a href="{{ url('/sports') }}">Sporten</a></li>
 
                     @endrole
                     @role('sporter')
