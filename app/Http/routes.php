@@ -92,22 +92,25 @@ Route::group(['middleware' => 'role:coach'], function () {
 // URLS ONLY FOR CLUBS
 Route::group(['middleware' => 'role:club'], function () {
 
+	// dashboard
+	Route::get('/club-dashboard', ['as' => 'club.dashboard', 'uses' => 'Club\DashboardController@club_index']);
+
 	// Locations
-	Route::get('/locations', ['as' => 'locations.index', 'uses' => 'Coach\LocationController@index']);
-	Route::get('/location/add', ['as' => 'locations.add', 'uses' => 'Coach\LocationController@get_add']);
-	Route::post('/location/add', ['as' => 'locations.add', 'uses' => 'Coach\LocationController@store']);
-	Route::get('/location/edit/{id}', ['as' => 'locations.edit', 'uses' => 'Coach\LocationController@get_edit']);
-	Route::post('/location/edit/{id}', ['as' => 'locations.edit', 'uses' => 'Coach\LocationController@update']);
-	Route::get('/location/remove/{id}', ['as' => 'locations.remove', 'uses' => 'Coach\LocationController@destroy']);
-	Route::get('/location/{id}', ['as' => 'locations.view', 'uses' => 'Coach\LocationController@get_view']);
+	Route::get('/locations', ['as' => 'locations.index', 'uses' => 'Club\LocationController@index']);
+	Route::get('/location/add', ['as' => 'locations.add', 'uses' => 'Club\LocationController@get_add']);
+	Route::post('/location/add', ['as' => 'locations.add', 'uses' => 'Club\LocationController@store']);
+	Route::get('/location/edit/{id}', ['as' => 'locations.edit', 'uses' => 'Club\LocationController@get_edit']);
+	Route::post('/location/edit/{id}', ['as' => 'locations.edit', 'uses' => 'Club\LocationController@update']);
+	Route::get('/location/remove/{id}', ['as' => 'locations.remove', 'uses' => 'Club\LocationController@destroy']);
+	Route::get('/location/{id}', ['as' => 'locations.view', 'uses' => 'Club\LocationController@get_view']);
 
 	// Sports
-	Route::get('/sports', ['as' => 'sports.index', 'uses' => 'Coach\SportController@index']);
-	Route::get('/sport/add', ['as' => 'sports.add', 'uses' => 'Coach\SportController@get_add']);
-	Route::post('/sport/add', ['as' => 'sports.add', 'uses' => 'Coach\SportController@store']);
-	Route::get('/sport/edit/{id}', ['as' => 'sports.edit', 'uses' => 'Coach\SportController@get_edit']);
-	Route::post('/sport/edit/{id}', ['as' => 'sports.edit', 'uses' => 'Coach\SportController@update']);
-	Route::get('/sport/remove/{id}', ['as' => 'sports.remove', 'uses' => 'Coach\SportController@destroy']);
+	Route::get('/sports', ['as' => 'sports.index', 'uses' => 'Club\SportController@index']);
+	Route::get('/sport/add', ['as' => 'sports.add', 'uses' => 'Club\SportController@get_add']);
+	Route::post('/sport/add', ['as' => 'sports.add', 'uses' => 'Club\SportController@store']);
+	Route::get('/sport/edit/{id}', ['as' => 'sports.edit', 'uses' => 'Club\SportController@get_edit']);
+	Route::post('/sport/edit/{id}', ['as' => 'sports.edit', 'uses' => 'Club\SportController@update']);
+	Route::get('/sport/remove/{id}', ['as' => 'sports.remove', 'uses' => 'Club\SportController@destroy']);
 });
 
 
@@ -117,7 +120,7 @@ Route::group(['middleware' => 'role:club'], function () {
 
 Route::group(['prefix' => 'api/v1/'], function () {
 
-	Route::get('users', ['middleware' => 'throttle:60,1', function (User $user) {
+/*	Route::get('users', ['middleware' => 'throttle:60,1', function (User $user) {
 		return $user::all();
 	}]);
 
@@ -134,6 +137,6 @@ Route::group(['prefix' => 'api/v1/'], function () {
 
 	Route::get('videos', ['middleware' => 'throttle:60,1', function (Video $video) {
 		return Video::all();
-	}]);
+	}]);*/
 
 });
