@@ -65,6 +65,7 @@
 						<li><a href="{{ url('/club-dashboard') }}"><i class="fa fa-home" aria-hidden="true"></i> Dashboard</a></li>
 						<li><a href="{{ url('/locations') }}"><i class="fa fa-map-marker" aria-hidden="true"></i> Locaties</a></li>
 						<li><a href="{{ url('/sports') }}"><i class="fa fa-futbol-o" aria-hidden="true"></i> Sporten</a></li>
+						<li><a href="{{ url('/coaches') }}"><i class="fa fa-futbol-o" aria-hidden="true"></i> Coaches</a></li>
 						@endrole
 					</ul>
 

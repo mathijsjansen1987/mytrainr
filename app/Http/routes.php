@@ -111,6 +111,14 @@ Route::group(['middleware' => 'role:club'], function () {
 	Route::get('/sport/edit/{id}', ['as' => 'sports.edit', 'uses' => 'Club\SportController@get_edit']);
 	Route::post('/sport/edit/{id}', ['as' => 'sports.edit', 'uses' => 'Club\SportController@update']);
 	Route::get('/sport/remove/{id}', ['as' => 'sports.remove', 'uses' => 'Club\SportController@destroy']);
+
+	// Coaches
+	Route::get('/coaches', ['as' => 'coaches.index', 'uses' => 'Club\CoachController@index']);
+	Route::get('/coach/add', ['as' => 'coaches.add', 'uses' => 'Club\CoachController@get_add']);
+	Route::post('/coach/add', ['as' => 'coaches.add', 'uses' => 'Club\CoachController@store']);
+	Route::get('/coach/edit/{id}', ['as' => 'coaches.edit', 'uses' => 'Club\CoachController@get_edit']);
+	Route::post('/coach/edit/{id}', ['as' => 'coaches.edit', 'uses' => 'Club\CoachController@update']);
+	Route::get('/coach/remove/{id}', ['as' => 'coaches.remove', 'uses' => 'Club\CoachController@destroy']);
 });
 
 
